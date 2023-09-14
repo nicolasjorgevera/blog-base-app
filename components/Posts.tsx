@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ListItem from "./ListItem";
 
 export default function Posts() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState<BlogPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
