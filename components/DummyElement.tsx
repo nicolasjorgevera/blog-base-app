@@ -1,10 +1,11 @@
 
 "use client"
 
-export default async function Dummyelement({ json } : any) {
+export default function Dummyelement({ json } : any) {
   console.log("DUMMY",json)
   return (
-  <>
+  <> 
+    <p>See the console</p>
   </>
   );
 }
