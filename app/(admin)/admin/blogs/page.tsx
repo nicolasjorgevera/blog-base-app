@@ -6,7 +6,7 @@ import { DataTable } from "./data-table"
 
 
 export default function Blogs () {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState<BlogPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -17,7 +17,6 @@ export default function Blogs () {
       return response
     })
   }, [])
-
   
   return (
     <div className="container py-10 mx-auto">
