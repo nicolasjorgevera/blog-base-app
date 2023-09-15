@@ -103,6 +103,7 @@ export async function getPostDataToEdit (id: string) {
     published: matterResult.data.published ? "Published" : "Draft",
     // body: processedContent,
     body: tree,
+    // body: matterResult.content,
   }
   // console.log("body-LIB", blogPost)
   // Combine the data with the id

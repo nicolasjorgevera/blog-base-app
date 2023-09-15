@@ -2,7 +2,6 @@ import { getPostDataToEdit, getSortedPostsData } from "@/lib/posts"
 import { notFound } from "next/navigation"
 import DummyElement from "@/components/DummyElement"
 
-
 export default async function EditorPost({ params } : { params: { postId: string}}) {
   const posts = await getSortedPostsData()
   const { postId } = params
@@ -11,8 +10,11 @@ export default async function EditorPost({ params } : { params: { postId: string
     return notFound()
   }
 
+
   const { title, date, published,  body } = await getPostDataToEdit(postId)
 
+  console.log("tree", body)
+  
   return (
     <main>
       <h1>Editor</h1>

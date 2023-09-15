@@ -2,6 +2,7 @@
 "use client"
 
 export default function Dummyelement({ json } : any) {
+
   console.log("DUMMY",json)
   return (
   <> 
