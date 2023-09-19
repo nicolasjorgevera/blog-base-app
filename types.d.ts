@@ -1,11 +1,11 @@
-import { type } from "os";
-
 type BlogPost = {
   id: string;
   title: string;
   date: string;
   published: string;
 }
+
+type BlogPostWithBody = BlogPost & { body: any }
 
 type JsonBlogPost = {
   type: "root";
@@ -60,9 +60,16 @@ type Image = {
   position: FullPosition;
 }
 
+type FootnoteReference = {
+  type: "footnoteReference";
+  identifier: string;
+  label: string | null;
+  position: FullPosition;
+}
+
 type Paragraph = {
   type: "paragraph";
-  children: Array<BasicText | TextModification | Link | Image>[];
+  children: Array<BasicText | TextModification | Link | Image | FootnoteReference>[];
   position: FullPosition;
 }
 
@@ -108,3 +115,31 @@ type Code = {
   value: string;
   position: FullPosition;
 }
+
+type TableCell = {
+  type: "tableCell";
+  children: Array<BasicText | TextModification | Link | Image>[];
+  position: FullPosition;
+}
+
+type TableRow = {
+  type: "tableRow";
+  children: Array<TableCell>[];
+  position: FullPosition;
+}
+
+type Table = {
+  type: "table";
+  align: Array<"left" | "center" | "right" | null>;
+  children: Array<TableRow>[];
+  position: FullPosition;
+}
+
+type FootNoteDefinition = {
+  type: "footnoteDefinition";
+    identifier: string;
+    label: string | null; 
+    children: Array<Paragraph | List>[];
+    position: FullPosition;
+}
+

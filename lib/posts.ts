@@ -9,12 +9,12 @@ import remarkMdx from 'remark-mdx'
 import html from 'remark-html';
 
 
-import { fromMarkdown } from "mdast-util-from-markdown"
-import { toMarkdown } from 'mdast-util-to-markdown'
+// import { fromMarkdown } from "mdast-util-from-markdown"
+// import { toMarkdown } from 'mdast-util-to-markdown'
 
 
-import { gfm } from 'micromark-extension-gfm'
-import { gfmFromMarkdown, gfmToMarkdown } from 'mdast-util-gfm'
+// import { gfm } from 'micromark-extension-gfm'
+// import { gfmFromMarkdown, gfmToMarkdown } from 'mdast-util-gfm'
 
 
 const postsDirectory = path.join(process.cwd(), 'blogposts');
@@ -89,20 +89,20 @@ export async function getPostDataToEdit (id: string) {
   const matterResult = matter(fileContents);
 
 
-  console.log ("MATTER", fileContents)
-  const tree = fromMarkdown(matterResult.content,'utf8' , {
-    // uncomment next two line to enable gfm
-    // extensions: [gfm()],
-    // mdastExtensions: [ gfmFromMarkdown() ]
-  })
+  // console.log ("MATTER", fileContents)
+  // const tree = fromMarkdown(matterResult.content,'utf8' , {
+  //   // uncomment next two line to enable gfm
+  //   // extensions: [gfm()],
+  //   // mdastExtensions: [ gfmFromMarkdown() ]
+  // })
 
-  const blogPost: BlogPost & {  body: any } = {
+  const blogPost: BlogPostWithBody = {
     id,
     title: matterResult.data.title,
     date: matterResult.data.date,
     published: matterResult.data.published ? "Published" : "Draft",
     // body: processedContent,
-    body: tree,
+    body: matterResult.content,
     // body: matterResult.content,
   }
   // console.log("body-LIB", blogPost)
