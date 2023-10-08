@@ -10,9 +10,11 @@ type BlogPostWithBody = BlogPost & { body: any }
 type JsonBlogPost = {
   type: "root";
   depth: number;
-  children: Array<Heading | Paragraph | List | Blockquote | Html | ThematicBreak | Code>[];
+  children: Array<Heading | Paragraph | List | Blockquote | Html | ThematicBreak | Code | Table | ThematicBreak | FootNoteDefinition>[];
   position: FullPosition;
 }
+
+type BlogPart = Heading | Paragraph | List | Blockquote | Html | ThematicBreak | Code | Table | ThematicBreak | FootNoteDefinition
 
 type FullPosition ={
   start: Position;
@@ -29,7 +31,7 @@ type Heading = {
   type: "heading";
   depth: number;
   children: Array<BasicText>[];
-  position: Position;
+  position: FullPosition;
 }
 
 type BasicText = {
